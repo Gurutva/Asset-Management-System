@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	layout:decorator="layout">
+
+<head>
+<title>User Home</title>
+</head>
+<body  style="background-color:#E1EFFB">
+	<div layout:fragment="content">
+		<p>    	<br>
+			Welcome <span sec:authentication="name"></span>
+		</p>
+		<!-- <p>
+			<a th:href="@{/logout}">Logout</a>
+		</p> -->
+
+		<div sec:authorize="hasRole('ROLE_ADMIN')">
+			<h3>Welcome To Admin Dashboard</h3>
+			<!-- <p>
+				<a th:href="@{/admin/home}">Admin Home</a>
+			</p> -->
+		</div>
+		<!-- <p>
+				<a th:href="@{/viewProfile}">View Profile</a>
+		</p>
+		<p>
+				<a th:href="@{/viewEmployeeAllocatedAsset}">View Assets Allocated</a>
+		</p> -->
+		
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	layout:decorator="layout">
+
+<head>
+<title>User Home</title>
+</head>
+<body  style="background-color:#E1EFFB">
+	<div layout:fragment="content">
+		<!-- <p>
+			Welcome <span sec:authentication="name"></span>
+		</p> -->
+		<h2 style="text-align:center;font-weight:bold;">Employee Profile</h2><br>
+		<!-- <p>
+			<a th:href="@{/logout}">Logout</a>
+		</p> -->
+
+		<table border="2" class = "table table-striped table-responsive-md">
+   <thead>
+
+      <th>Id</th>
+	 <th> Name </th>
+     <th> Email </th>
+     
+    <th> Business Unit </th>
+
+    </tr>
+   </thead>
+   <tbody>
+    <tr th:each="employee : ${employee}">
+  
+     <td th:text="${employee.id}"></td>
+     <td th:text="${employee.name}"></td>
+     <td th:text="${employee.email}"></td>
+      <td th:text="${employee.business_unit}"></td>
+
+    </tr>
+   </tbody>
+  </table>
+		
+		
+	</div>
+
+</body>
+
+</html>

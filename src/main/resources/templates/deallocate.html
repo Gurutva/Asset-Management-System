@@ -1,0 +1,43 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Asset Management System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body  style="background-color:#E1EFFB">
+    <div class="container">
+        <h2 style="text-align:center;font-weight:bold;">Deallocate Asset</h2>
+
+        <form action="#" th:action="@{/saveAsset2}" th:object="${assetAllocated}" method="POST">
+
+            
+            <input type="hidden" th:field="*{id}" />
+           
+            <input type="hidden" th:field="*{allocated_date}" />
+            <input type="hidden" th:field="*{asset_id}" />
+            <input type="hidden" th:field="*{employee_id}" />
+             <input type="hidden" th:field="*{expected_return_date}" />
+              <input type="hidden" th:field="*{status}" />
+              <input type="hidden" th:field="*{return_date}" />
+              <p style="font-weight:bold;">Remark For Deallocation</p>
+              <input type="text" th:field="*{remark}" />
+         	<br>
+         	<br>
+
+            <button type="submit" class="btn btn-info col-2"> Deallocate Asset</button>
+        </form>
+
+        <hr>
+
+        <a th:href="@{/admin/assetlist}"> Back to Asset List</a>
+    </div>
+</body>
+
+</html>
+

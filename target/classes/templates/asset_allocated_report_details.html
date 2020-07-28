@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	layout:decorator="layout">
+
+<head>
+<title>User Home</title>
+</head>
+<body  style="background-color:#E1EFFB">
+	<div layout:fragment="content">
+
+	<h2 style="text-align:center;font-weight:bold;">Asset Allocated Details</h2><br>
+		<table border="1" class = "table table-striped table-responsive-md">
+   <thead>
+
+      <th>Id</th>
+	 <th> Employee Id </th>
+     <th> Asset Id </th>
+
+
+    </tr>
+   </thead>
+   <tbody>
+    <tr th:each="asset : ${assetreport}">
+  	<td th:text="${asset.id}"></td>
+  	<td><a style="font-weight:bold;" th:text="${asset.employee_id}" th:href="@{/admin/adminEmployeeProfile/{id}(id=${asset.employee_id})}"></a></td>
+<td><a th:text="${asset.asset_id}" th:href="@{/viewAssetDetailsEmployee/{id}(id=${asset.asset_id})}"></a></td>
+
+
+    </tr>
+   </tbody>
+  </table>
+		  <a th:href="@{/admin/home}"> Back to Admin Dashboard</a> 
+		
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Asset Management System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body  style="background-color:#E1EFFB">
+    <div class="container">
+       <!--  <h1>Asset Management System</h1>
+        <hr> -->
+        <br>
+        <h1 style="font-weight:bold;">Update Asset</h1>
+<br>
+        <form action="#" th:action="@{/saveAsset}" th:object="${asset}" method="POST">
+
+            
+            <input type="hidden" th:field="*{id}" />
+            <input type="hidden" th:field="*{allocated}" />
+         
+            <input type="hidden" th:field="*{allocated_id}" /> 
+
+           <!-- <input type="text" th:field="*{allocated}" placeholder="Allocated" class="form-control mb-4 col-4"> -->
+			<h5>Brand:</h5>
+            <input type="text" th:field="*{brand}"  class="form-control mb-4 col-4">
+  			<div>
+	            <h5>Model:</h5>
+				<input type="text" th:field="*{model}"  class="form-control mb-4 col-4">
+			</div>
+			<h5>RAM:</h5>
+            <input type="text" th:field="*{ram}"  class="form-control mb-4 col-4">
+            <h5>ROM:</h5>
+            <input type="text" th:field="*{rom}"  class="form-control mb-4 col-4">
+            <h5>Graphics:</h5>
+            <input type="text" th:field="*{graphics}"  class="form-control mb-4 col-4">
+            
+         
+
+            <button type="submit" class="btn btn-info col-2"> Update Asset</button>
+        </form>
+
+        <hr>
+
+        <a th:href="@{/admin/assetlist}"> Back to Asset List</a>
+        <br><br>
+    </div>
+</body>
+
+</html>
+

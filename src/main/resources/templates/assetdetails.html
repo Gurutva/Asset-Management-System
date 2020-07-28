@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	layout:decorator="layout">
+
+<head>
+<title>User Home</title>
+</head>
+<body  style="background-color:#E1EFFB">
+	<div layout:fragment="content">
+
+	<h2 style="text-align:center;font-weight:bold;">Asset Details</h2><br>
+		<table border="1" class = "table table-striped table-responsive-md">
+   <thead>
+
+      <th>Id</th>
+	 <th> Brand </th>
+     <th> Model </th>
+     
+    <th> Ram </th>
+    <th> Rom </th>
+    <th> graphics </th>
+
+    </tr>
+   </thead>
+   <tbody>
+    <tr th:each="asset : ${assetdetails}">
+  
+     <td th:text="${asset.id}"></td>
+     <td th:text="${asset.brand}"></td>
+     <td th:text="${asset.model}"></td>
+      <td th:text="${asset.ram}"></td>
+      <td th:text="${asset.rom}"></td>
+      <td th:text="${asset.graphics}"></td>
+
+    </tr>
+   </tbody>
+  </table>
+		
+		
+	</div>
+
+</body>
+
+</html>

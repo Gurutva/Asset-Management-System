@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Asset Management System</title>
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport" />
+<link rel="stylesheet"
+	th:href="@{/assets/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	th:href="@{/assets/font-awesome-4.5.0/css/font-awesome.min.css}" />
+<link rel="stylesheet" th:href="@{/assets/css/styles.css}" />
+
+<style>
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	/* background-color: black; */
+	color: white;
+	height: 100px;
+	text-align: center;
+	background-color:#238FCE;
+	
+	
+}
+.navbar
+	{
+	background-color:#238FCE;
+	}
+</style>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				 
+				 <!-- <a class="navbar-brand" href="#" th:href="@{/}"  style="color:white;font-weight:bold;">Asset Management System</a>  -->
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+			
+				<ul class="nav navbar-nav">
+					<li><a href="#" th:href="@{/}" style="margin:0;padding:0;"><img src="http://mystorage.rf.gd/upload/pankajlogohackathon.png"  th:href="@{/}" height="70px" width="120px"/></a></li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/admin/assetlist}" style="color:white;padding-top:25px;">Asset Details</a></li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/admin/employeelist}"  style="color:white;padding-top:25px;">Employee list</a></li>
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/viewProfile}"  style="color:white;padding-top:25px;">View Profile</a></li>
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/viewEmployeeAllocatedAsset}"  style="color:white;padding-top:25px;">Allocated Assets</a></li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/admin/viewEmployeeReports}"  style="color:white;padding-top:25px;">View Reports</a></li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/admin/startSurvey}"  style="color:white;padding-top:25px;">Survey</a></li>
+					 <li sec:authorize="isAuthenticated()"><a th:href="@{/viewEmployeeSurvey}"  style="color:white;padding-top:25px;">Employee Survey</a></li>
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"  style="color:white;padding-top:25px;">Logout</a></li>
+				</ul>
+			</div>
+			<!-- <div sec:authorize="hasRole('ROLE_ADMIN')">
+							
+			</div> -->
+		</div>
+	</nav>
+
+	<div class="container">
+
+		<div layout:fragment="content">
+			<!-- Your Page Content Here -->
+		</div>
+
+	</div>
+
+	<script th:src="@{'/assets/js/jquery-2.1.4.min.js'}"></script>
+	<script th:src="@{'/assets/bootstrap/js/bootstrap.min.js'}"></script>
+
+	<div class="footer">
+	<h3>
+		Principal Hackathon
+		</h3>
+		<h4>
+			Copyright@2020
+		</h4>
+	</div>
+
+</body>
+</html>

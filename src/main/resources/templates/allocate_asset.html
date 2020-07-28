@@ -1,0 +1,99 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Asset Management System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body  style="background-color:#E1EFFB">
+    <div class="container">
+        <h1>Asset Management System</h1>
+        <hr>
+        <h2>Allocate Asset</h2>
+
+         <form action="#" th:action="@{/saveAsset1}" th:object="${asset}" method="POST">
+
+            
+            <input type="hidden" th:field="*{id}" />
+
+            
+
+            <input type="hidden" th:field="*{brand}"  class="form-control mb-4 col-4" >
+			<input type="hidden" th:field="*{model}"  class="form-control mb-4 col-4">
+            <input type="hidden" th:field="*{ram}"  class="form-control mb-4 col-4">
+            <input type="hidden" th:field="*{rom}"  class="form-control mb-4 col-4">
+            <input type="hidden" th:field="*{graphics}"  class="form-control mb-4 col-4">
+            <input type="hidden" th:field="*{confirm_survey}"  class="form-control mb-4 col-4">
+            
+			<input type="hidden" th:field="*{status}"  class="form-control mb-4 col-4" > 
+			
+			<!-- <p>
+			Employee ID
+			<input type="text" th:field="*{allocated}"  class="form-control mb-4 col-4">
+			</p> -->
+			
+			<p>Select Employee</p>
+			<select th:field="*{allocated}" class="form-control mb-4 col-4" >
+				<!-- <option value="0">Select Employee</option> -->
+				<option th:each="user : ${listusers}"  th:if="${user.status == 1}" th:value="${user.id}" th:text="${user.name}"></option>
+			</select>
+			
+
+			<p>Select Expected Return Date</p>
+			<input type="date" th:field="*{expected_return_date}"  class="form-control mb-4 col-4" th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}">  
+            
+            <button type="submit" class="btn btn-info col-2"> Allocate Asset</button>
+        
+       
+ </form> 
+       <a th:href="@{/assetlist}"> Back to Asset List</a>
+       
+       
+       
+       
+       
+		<table border="1" class = "table table-striped table-responsive-md">
+							   <thead>
+							   <tr>
+							     <th>Id</th>
+							     <th>Email</th>
+							     <th>Name</th>				   
+							     <th>Status</th>
+							    <!--  <th></th>
+							     <th>Allocated Date</th>
+							     <th>return Date</th>
+							     <th>Allocate<th> -->
+							     
+							
+							   </thead>
+							   <tbody>
+							    <tr th:each="users : ${listusers}">
+								    <td th:text="${users.id}"></td>
+								     <td th:text="${users.email}"></td>
+								     <td th:text="${users.name}"></td>     
+								<td>
+							     	<span th:if="${users.status}">Active</span>
+								    <span th:unless="${users.status}">Not Active</span>
+							     </td> 
+							     <!--  <td><input type="text" th:field="*{allocated}" ></td>
+								 	
+								<td><input type="date" th:field="*{allocated_date}" >  </td>
+							     <td><input type="date" th:field="*{expected_return_date}" >  </td>
+							     <td> <button type="submit" class="btn"> Allocate Asset</button></td> -->
+							     
+							
+							    </tr>
+							   </tbody>
+							  </table>
+							  
+							
+	</div>
+</body>
+
+</html>
+

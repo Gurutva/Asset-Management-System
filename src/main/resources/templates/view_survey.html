@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Asset Management System</title>
+
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+ <style>
+ .btn1
+ {
+ background-color:green;
+ }
+ .btn2
+ {
+ background-color:#ff3333;
+ text-align:center;
+ }
+ </style>
+ 
+</head>
+<body  style="background-color:#E1EFFB">
+
+ <div class="container my-2">
+ <h1 style="text-align:center;font-weight:bold;">Survey</h1><br>
+ <a th:href="@{/admin/createSurvey}" class="btn btn-primary btn1"> Create Survey </a>
+ <a th:href="@{/admin/stopSurvey}" class="btn btn-primary btn2" > Stop Survey </a>
+ <br><br>
+  <p><a href="/admin/home">Back to Admin Home</a></p>
+  <table border="2" class = "table table-striped table-responsive-md">
+   <thead>
+    <!-- <tr>
+     <th>Allocated</th>
+     <th>Brand</th>
+     <th>Model</th>
+     <th>Ram</th>
+     <th>Rom</th>
+     <th>Graphics</th>
+     <th>Update</th>
+      <th> Delete </th>
+    </tr> -->
+    <tr>
+  		<th>Asset Id </th>
+	 <th> Brand </th>
+     <th> Model </th>
+     <th>Status</th>
+     <th>Employee Id</th>
+     <th>Confirmation</th>
+
+    </tr>
+   </thead>
+   <tbody>
+    <tr th:each="assets : ${assets}">
+    <td th:text="${assets.id}"></td>
+     <td th:text="${assets.brand}"></td>
+     <td th:text="${assets.model}"></td>
+     <td>
+     	<span th:if="${assets.status}" style="color:green;font-weight:bold;">Active</span>
+	    <span th:unless="${assets.status}" style="color:red;">Not Active</span>
+     </td> 
+     
+     <td th:if="${assets.allocated}"><a style="font-weight:bold;" th:text="${assets.allocated}" th:href="@{/admin/adminEmployeeProfile/{id}(id=${assets.allocated})}"></a></td>
+    <!--  <td th:if="${assets.allocated}" th:text="${assets.allocated}" ></td> -->
+	   <td th:unless="${assets.allocated}">Not Allocated</td>
+	   
+    <td th:if="${assets.confirm_survey}==0">Survey Not Initiated</td>
+	  <td th:if="${assets.confirm_survey}==1">Not Confirmed</td>
+	  <td th:if="${assets.confirm_survey}==2">Confirmed</td>
+      
+      </tr>
+   </tbody>
+  </table>
+  
+</body>
+</html>
+
